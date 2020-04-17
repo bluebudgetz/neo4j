@@ -4,8 +4,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      GITHUB_SHORT_SHA: ${GITHUB_SHA::7}
     steps:
       - name: Clone
         uses: actions/checkout@v1
@@ -14,6 +12,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: docker login docker.pkg.github.com -u arikkfir -p "${GITHUB_TOKEN}"
       - name: Build Image
-        run: docker build --tag=docker.pkg.github.com/${GITHUB_REPOSITORY}/neo4j:${GITHUB_SHORT_SHA} .
+        run: docker build --tag=docker.pkg.github.com/${GITHUB_REPOSITORY}/neo4j:${GITHUB_SHA::7} .
       - name: Push Image
-        run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/neo4j:${GITHUB_SHORT_SHA}
+        run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/neo4j:${GITHUB_SHA::7}
