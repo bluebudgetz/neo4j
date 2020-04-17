@@ -8,8 +8,9 @@ jobs:
       - name: Clone
         uses: actions/checkout@v1
       - name: ShowSecret
+        uses: docker://ubuntu:latest
         with:
-          test: ${{ secrets.TEST }}
+          test: "${{ secrets.TEST }}"
         run: cat
 #      - name: Docker login
 #        with:
