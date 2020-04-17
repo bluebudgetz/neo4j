@@ -15,3 +15,5 @@ jobs:
         run: docker build --tag=docker.pkg.github.com/${GITHUB_REPOSITORY}/neo4j:${GITHUB_SHA} .
       - name: Push Image
         run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/neo4j:${GITHUB_SHA}
+      - name: Push Image
+        run: echo ${GITHUB_SHA::8}
