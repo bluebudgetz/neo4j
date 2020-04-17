@@ -1,4 +1,4 @@
-FROM ubuntu AS downloads
+FROM byrnedo/alpine-curl AS downloads
 ENV APOC_VERSION="3.5.0.9"
 ENV APOC_URL="https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/${APOC_VERSION}/apoc-${APOC_VERSION}-all.jar"
 RUN curl --location "${APOC_URL}" --output "/tmp/apoc-${APOC_VERSION}-all.jar"
